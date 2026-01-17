@@ -1,0 +1,53 @@
+{
+    "name": "Potioneering",
+    "version": "0.1.0",
+    "styleFileList": [],
+    "scriptFileList": [
+        "00-localization/zh-CN/base.js",
+        "00-localization/en-US/base.js",
+        "01-js/macros.js",
+        "01-js/event_registry.js",
+        "09-database/database_events.js"
+    ],
+    "scriptFileList_earlyload": [
+        "earlyload/readData.js"
+    ],
+    "scriptFileList_inject_early": [],
+    "tweeFileList": [
+        "twee/Pot_ChemLab.twee",
+        "twee/Pot_NPC.twee",
+        "twee/Pot_Events.twee",
+        "twee/Pot_Transformation_Events.twee"
+    ],
+    "imgFileList": [],
+    "additionFile": [],
+    "addonPlugin": [{
+        "modName": "TweeReplacer",
+        "addonName": "TweeReplacerAddon",
+        "modVersion": "^1.6.0",
+        "params": [{
+            "passage": "PassageHeader",
+            "findString": "<<if !$cheatReload>>",
+            "replace": "<<if $NPCNameList>><<init_Pot_NPCs>><</if>><<if !$cheatReload>>"
+        }, {
+            "passage": "Hallways",
+            "findString": "|Housekeeping Classroom]]>><<set $justEntered to true>><<pass 1>><</link>>",
+            "replace": "|Housekeeping Classroom]]>><<set $justEntered to true>><<pass 1>><</link>><br><<PotHallwayLabLink>>"
+        }, {
+            "passage": "Hallways",
+            "findString": "<<eventsschoolhallways>>",
+            "replace": "<<PotHallwayEvent>><<eventsschoolhallways>>"
+        }, {
+            "passage": "Canteen",
+            "findString": "<<if C.npc.Sydney.init is 1 and _sydney_location is \"canteen\" and $exposed lte 0>>",
+            "replace": "<<PotCanteenEvent>><<if C.npc.Sydney.init is 1 and _sydney_location is \"canteen\" and $exposed lte 0>>"
+        }]
+    }],
+    "dependencyInfo": [{
+        "modName": "TweeReplacer",
+        "version": "^1.6.0"
+    }, {
+        "modName": "ModLoader",
+        "version": "^2.26.9"
+    }]
+}

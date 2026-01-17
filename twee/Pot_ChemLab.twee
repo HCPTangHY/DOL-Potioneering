@@ -1,0 +1,61 @@
+:: Pot ChemLab
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+<<if $schoolstate is "afternoon" or $schoolstate is "lunch" or $schoolstate is "morning">>
+    <<= L("Pot.Welcome")>>
+    <br><br>
+    <<= L("Location.ChemLab.Desc")>>
+    <br><br>
+    
+    <<npc Sage>><<person1>>
+    
+    <<if $Pot.sageIntro is 0>>
+        <<set $Pot.sageIntro to 1>>
+        <<= L("Pot.Sage.Greet")>>
+        <br>
+        塞吉抬起头，透过护目镜看到了你。<<= L("Pot.Sage.Intro")>>
+        <br><br>
+        <<Llink "Pot.Sage.Talk" "Pot Sage Chat">><</Llink>>
+    <<else>>
+        <<= L("Pot.Sage.Greet")>>
+        <br><br>
+        
+        /* 事件链触发逻辑 */
+        <<potCheckTransform>>
+        <<if $Pot.sageEventStage is 0 and $NPCName[$NPCNameList.indexOf("Sage")].love gte 10 and _hasTF>>
+             <<Llink "Pot.Sage.TF.Research" "Pot Sage TF Discover">><</Llink>>
+             <br>
+        <<elseif $Pot.sageEventStage is 1 and $NPCName[$NPCNameList.indexOf("Sage")].love gte 20>>
+             <<Llink "Pot.Sage.TF.Sample" "Pot Sage TF Sample">><</Llink>>
+             <br>
+        <<elseif $Pot.sageEventStage is 2 and $Pot.sageResearchTimer lte Time.days and $NPCName[$NPCNameList.indexOf("Sage")].love gte 30>>
+             <<Llink "Pot.Sage.TF.Research" "Pot Sage TF Complete">><</Llink>>
+             <br>
+        <<elseif $Pot.sageEventStage gte 3>>
+             <<Llink "Pot.Sage.TF.Services" "Pot Sage TF Shop">><</Llink>>
+             <br>
+        <</if>>
+
+        <<Llink "Pot.Sage.Talk" "Pot Sage Chat">><</Llink>>
+    <</if>>
+    
+    <br><br>
+<<else>>
+    <<= L("Pot.Closed")>>
+    <br><br>
+<</if>>
+
+<<getouticon>><<Llink "Common.Leave" "Hallways">><<endevent>><</Llink>>
+
+:: Pot Sage Chat
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+<<set _event to setup.Pot.EventSystem.getEvent("PotSageTalk")>>
+<<if _event>>
+    <<goto _event>>
+<<else>>
+    <<= L("Pot.Sage.Busy")>>
+    <br><br>
+    <<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+<</if>>

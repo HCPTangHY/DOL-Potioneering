@@ -1,0 +1,162 @@
+:: Pot Sage TF Discover|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+As you get closer, Sage abruptly stops working, even taking off the goggles, staring straight at you.
+<br><br>
+"Wait..." <<he>> leans in, sniffing lightly and studying your features. "Your readings are... fascinating. I mean—unique."
+<br><br>
+Realising how that sounded, Sage flushes. "Sorry. That's not what I meant. It's just... it looks like you're undergoing some kind of atypical biological transformation?"
+<br><br>
+You nod. Sage's eyes light up.
+"If you're willing, I'd like to study this phenomenon. Of course, that might require you to provide some... samples."
+<br><br>
+<<set $Pot.sageEventStage to 1>>
+<<npcincr Sage love 2>><<glove Sage>>
+<br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Sample|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"You'll help with the research? That's great!" Sage eagerly produces a lancet and a set of vials.
+<br><br>
+It's quick—just a sharp sting. Sage seals the samples with meticulous care.
+"Give me a few days. I think I can isolate what's in it... and maybe find a way to steer it."
+<br><br>
+<<set $Pot.sageEventStage to 2>>
+<<set $Pot.sageResearchTimer to Time.days + 3>>
+<<npcincr Sage love 5>><<gglove Sage>>
+<<money 2000 "research_grant">>
+You receive a £20.00 research grant.
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Complete|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+The moment you step into the lab, Sage rushes over, clutching a vial of faintly glowing liquid.
+<br><br>
+"I did it! I mapped the chemical mechanism behind these changes!" <<he>> says, almost breathless. "I can't fully reverse it—"
+<br><br>
+Sage's voice dips suddenly, as if a hand has pressed down on the sound itself. <<He>> stares past you, eyes fixed on something that isn't there.
+"That belongs to..."
+<br><br>
+The next word never quite arrives. It twists into a dry hiss, like radio static with no radio, leaving only an aftertaste of meaning—something your mind refuses to hold.
+<br><br>
+A sudden chill crawls up your spine. The lights seem to dim for a heartbeat, and the air prickles with a faint, impossible charge. Who—or what—was Sage about to name?
+<br><br>
+"Ahem. Anyway," Sage blinks hard, snapping back to normal. "Now that we're brushing against the edge of what matter can be... I can synthesise compounds to <b>accelerate</b> or <b>inhibit</b> the process."
+<br><br>
+<<he>> gestures at a neat row of labelled bottles. "If you ever need to adjust your condition, come to me."
+<br><br>
+<<set $Pot.sageEventStage to 3>>
+<<npcincr Sage love 5>><<gglove Sage>>
+<br>
+<<Llink "Browse potion services" "Pot Sage TF Shop">><</Llink>>
+<br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Shop|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"What kind of potion do you need?" Sage asks.
+<br><br>
+
+<<set _dailyLimit to 2>>
+<<if $Pot.tfShopDay isnot Time.days>>
+	<<set $Pot.tfShopDay to Time.days>>
+	<<set $Pot.tfShopCount to 0>>
+<</if>>
+<span class="gold">Daily purchase remaining: <<print _dailyLimit - $Pot.tfShopCount>> / <<print _dailyLimit>></span>
+<br><br>
+
+<<if $Pot.tfShopCount gte _dailyLimit>>
+	<span class="black">Sage doesn't seem willing to sell any more potions today.</span>
+	<br>
+<<else>>
+	<div class="div-line"></div>
+	<span class="gold">Inhibitors (£50.00)</span> - <span class="blue">Reduce transformation build</span><br>
+	<<if $money gte 5000>>
+		<<Llink "Buy Wolf Inhibitor" "Pot Sage TF Potion">><<set $potionType to "wolf">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Cat Inhibitor" "Pot Sage TF Potion">><<set $potionType to "cat">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Cow Inhibitor" "Pot Sage TF Potion">><<set $potionType to "cow">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Bird Inhibitor" "Pot Sage TF Potion">><<set $potionType to "bird">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Fox Inhibitor" "Pot Sage TF Potion">><<set $potionType to "fox">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+	<<else>>
+		<span class="red">Not enough money.</span>
+	<</if>>
+	<br>
+	<span class="gold">Catalysts (£100.00)</span> - <span class="purple">Increase transformation build</span><br>
+	<<if $money gte 10000>>
+		<<Llink "Buy Wolf Catalyst" "Pot Sage TF Potion">><<set $potionType to "wolf">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Cat Catalyst" "Pot Sage TF Potion">><<set $potionType to "cat">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Cow Catalyst" "Pot Sage TF Potion">><<set $potionType to "cow">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Bird Catalyst" "Pot Sage TF Potion">><<set $potionType to "bird">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "Buy Fox Catalyst" "Pot Sage TF Potion">><<set $potionType to "fox">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+	<<else>>
+		<span class="red">Not enough money.</span>
+	<</if>>
+	<br>
+<</if>>
+
+<div class="div-line"></div>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Potion|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+You drink the potion.
+<br>
+
+<<if $potionMode is "inhibitor">>
+	<<if $potionType is "wolf">>
+		A chill slides down your throat, like winter wind mixed with the bitterness of silver needle grass. The restlessness inside you calms down.
+	<<elseif $potionType is "cat">>
+		It tastes like over-steeped peppermint tea, leaving a numbing sensation on your tongue. The urge to scratch fades away.
+	<<elseif $potionType is "cow">>
+		It tastes like concentrated herbal juice without sugar, bitter and earthy. Your body feels less heavy and heated.
+	<<elseif $potionType is "bird">>
+		It feels like swallowing liquid lead, weighing down the lightness that urges you to fly. A taste of stale seeds lingers in your mouth.
+	<<elseif $potionType is "fox">>
+		Extremely bitter, like biting into an unripe acorn. The constant urge to play pranks is forcibly suppressed.
+	<<else>>
+		It tastes like unripe lemon mixed with mint.
+	<</if>>
+	<br><br>
+	<<transform $potionType -10>>
+	<span class="blue">You feel that wild edge inside you recede.</span>
+<<else>>
+	<<if $potionType is "wolf">>
+		Spicy! The liquid burns down your esophagus, filling your mouth with the taste of rust and raw meat. You have a sudden urge to howl at the moon.
+	<<elseif $potionType is "cat">>
+		Like warm melted butter mixed with strong catnip, sweet enough to make you dizzy. Your fingertips itch, and your pupils contract involuntarily.
+	<<elseif $potionType is "cow">>
+		A rich sweetness, blending the scent of fresh alfalfa and warm milk. You feel a warm current rushing to your chest and belly.
+	<<elseif $potionType is "bird">>
+		A crisp sweet-and-sour taste, like a handful of bursting wild berries. You feel as if a light breeze is trying to lift you up.
+	<<elseif $potionType is "fox">>
+		Sickly sweet with a hint of smoky burnt wood. Drinking it gives you a strange sense of excitement and cunning.
+	<<else>>
+		It tastes spicy and stimulating, like a fire burning in your stomach.
+	<</if>>
+	<br><br>
+	<<transform $potionType 10>>
+	<span class="purple">You feel the wildness inside you flare!</span>
+<</if>>
+
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>

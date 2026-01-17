@@ -1,0 +1,194 @@
+:: PotSageTalkChemistry
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你问塞吉在研究什么。<<he>>的眼睛立刻亮了起来。
+<br><br>
+"你真的想知道吗？" <<he>>放下手中的试管，"我正在研究一种能改变溶液颜色的催化剂。看！"
+<br><br>
+<<he>>将一滴透明液体滴入蓝色溶液中，溶液瞬间变成了鲜艳的紫色。
+<br><br>
+"很神奇吧？" <<he>>笑着说，"化学就是这么有趣。"
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotSageTalkSchool
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你问塞吉平时除了做实验还做什么。
+<br><br>
+"嗯..." <<he>>若有所思地说，"有时候我会去图书馆看书，或者在屋顶上吹风。实验室待久了需要透透气。"
+<br><br>
+"不过，" <<he>>补充道，"大部分时间我还是更喜欢待在这里。这里安静，没人打扰。"
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotSageTalkHobby
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+塞吉向你展示<<he>>的笔记本，里面画满了复杂的分子结构图。
+<br><br>
+"这些是我自己设计的化合物，" <<he>>解释道，"虽然大部分还只存在于理论阶段，但总有一天我会把它们合成出来。"
+<br><br>
+你对<<his>>的热情感到钦佩。
+<br><br>
+<<npcincr Sage love 2>><<gglove Sage>><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotLabEventExplosion
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+就在你们聊天的时候，实验台上的一个烧瓶突然发出"砰"的一声，冒出一团彩色的烟雾。
+<br><br>
+塞吉的脸瞬间变得漆黑，只有眼白还是白的。
+<br><br>
+"......这不在预期之内，" <<he>>咳嗽着说。
+<br><br>
+你忍不住笑了出来。
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotLabEventMess
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你不小心碰倒了一个蓝色的瓶子。塞吉眼疾手快，在它落地前接住了它。
+<br><br>
+"小心！" <<he>>松了一口气，"这东西洒出来的话，整个实验室都会变成蓝色的。"
+<br><br>
+<<he>>小心翼翼地把瓶子放回原位，然后转向你微笑。
+<br><br>
+"不过没关系，下次注意就好。"
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Hallway Discover Door
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+当你走过走廊的一个角落时，你注意到墙上有一处不寻常的痕迹。
+<br><br>
+你的历史知识告诉你，这所学校的建筑曾经经历过多次改建。根据墙壁的纹理和周围的痕迹，这里似乎曾经有一扇门。
+<br><br>
+你仔细观察，发现墙壁的一部分实际上是一扇被巧妙伪装的门。门上有一个生锈的锁。
+<br><br>
+<<set $Pot.sageStage to 1>>
+<span class="green">你发现了一扇隐藏的门！</span>
+<br><br>
+<<Llink "尝试打开门" "Pot Hallway Locked Door">><</Llink>>
+<br><br>
+<<Llink "暂时离开" "Hallways">><<set $eventskip to 1>><</Llink>>
+
+:: Pot Hallway Locked Door
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+你尝试推开那扇隐藏的门，但它纹丝不动。门上的锁虽然生锈了，但依然牢固。
+<br><br>
+看来你需要找到钥匙，或者等待某个知道这里的人出现。
+<br><br>
+<<Llink "离开" "Hallways">><<set $eventskip to 1>><</Llink>>
+
+:: Pot Hallway Meet Sage
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+当你再次经过那扇隐藏的门时，你注意到一个戴着护目镜的学生正站在门前，手里拿着一串钥匙。
+<br><br>
+<<he>>注意到了你，露出惊讶的表情。"你...你能看到这扇门？"
+<br><br>
+你点了点头。
+<br><br>
+"有意思，" <<he>>推了推护目镜，"大多数人都不会注意到这里。我叫塞吉，这是我的...私人实验室。"
+<br><br>
+<<he>>用钥匙打开了门，里面是一个充满各种化学仪器的小房间。
+<br><br>
+"既然你发现了这里，" <<he>>说，"以后想来的话随时欢迎。我可以教你一些有趣的东西。"
+<br><br>
+<<set $Pot.sageStage to 2>>
+<<set $Pot.sageIntro to 1>>
+<<npcincr Sage love 3>><<gglove Sage>>
+<span class="green">你遇到了塞吉，现在可以进入化学实验室了！</span>
+<br><br>
+<<Llink "进入实验室" "Pot ChemLab">><<endevent>><</Llink>>
+<br><br>
+<<Llink "暂时离开" "Hallways">><<endevent>><<set $eventskip to 1>><</Llink>>
+
+:: Pot Canteen Meet Sage
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你在食堂看到塞吉独自坐在角落里，面前放着一本厚厚的化学书和一份几乎没动过的午餐。
+<br><br>
+<<he>>似乎完全沉浸在书中，偶尔用叉子戳一下盘子里的食物，但目光从未离开书页。
+<br><br>
+<<Llink "和塞吉一起吃饭" "Pot Canteen Sage Lunch">><<pass 15>><<stress -6>><<npcincr Sage love 1>><</Llink>><<glove Sage>><<lstress>>
+<br><br>
+<<Llink "不打扰<<him>>" "Canteen">><<endevent>><</Llink>>
+
+:: Pot Canteen Sage Lunch
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你端着餐盘坐到塞吉对面。<<he>>抬起头，看到是你后露出了微笑。
+<br><br>
+"哦，是你。" <<he>>合上书，"难得有人愿意和我一起吃饭。"
+<br><br>
+你们边吃边聊，塞吉兴致勃勃地向你解释<<he>>正在读的内容——某种新型催化剂的合成方法。虽然你不太懂，但<<his>>热情很有感染力。
+<br><br>
+"谢谢你的陪伴，" 午餐结束时<<he>>说，"下次来实验室找我吧。"
+<br><br>
+<<Llink "返回" "Canteen">><<endevent>><</Llink>>
+
+:: Pot Hallway Sage Random
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你在走廊上遇到了塞吉。<<he>>怀里抱着一堆试管和烧瓶，走路的样子有些摇摇晃晃。
+<br><br>
+"小心！" 你提醒道。
+<br><br>
+"没事没事，" <<he>>笑着说，"我习惯了。这些是从储藏室拿的新设备，要带回实验室。"
+<br><br>
+<<he>>停下脚步看着你，"有空的话来实验室坐坐？我最近有些新发现想和你分享。"
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>><br>
+<<Llink "继续" "Hallways">><<endevent>><<set $eventskip to 1>><</Llink>>
+
+:: Pot Widgets [widget]
+<<widget "PotHallwayEvent">>
+	<<if !V.Pot || !V.Pot.eventHistory>>
+		/* 初始化 Pot 数据结构 (防止旧档报错) */
+		<<if !V.Pot>> <<set V.Pot = { sageIntro: 0, sageRelationship: 0, labVisitCount: 0, sageStage: 0, sageEventStage: 0, sageResearchTimer: 0, tfShopDay: -1, tfShopCount: 0 }>> <</if>>
+		<<if !V.Pot.eventHistory>> <<set V.Pot.eventHistory = {}>> <</if>>
+	<</if>>
+
+	<<set _potEvent to setup.Pot.EventSystem.getEvent("PotHallway")>>
+	<<if _potEvent>>
+		<<goto _potEvent>>
+	<</if>>
+<</widget>>
+
+<<widget "PotCanteenEvent">>
+	<<if !V.Pot || !V.Pot.eventHistory>>
+		/* 初始化 Pot 数据结构 */
+		<<if !V.Pot>> <<set V.Pot = { sageIntro: 0, sageRelationship: 0, labVisitCount: 0, sageStage: 0, sageEventStage: 0, sageResearchTimer: 0, tfShopDay: -1, tfShopCount: 0 }>> <</if>>
+		<<if !V.Pot.eventHistory>> <<set V.Pot.eventHistory = {}>> <</if>>
+	<</if>>
+
+	<<set _potEvent to setup.Pot.EventSystem.getEvent("PotCanteen")>>
+	<<if _potEvent>>
+		<<goto _potEvent>>
+	<</if>>
+<</widget>>
+
+<<widget "PotHallwayLabLink">>
+	<<if V.Pot && V.Pot.sageStage >= 2>>
+		<<scienceicon>><<Llink "Location.ChemLab" "Pot ChemLab">><<pass 1>><</Llink>>
+		<br>
+	<</if>>
+<</widget>>

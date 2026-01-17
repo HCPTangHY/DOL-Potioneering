@@ -1,0 +1,159 @@
+:: Pot Sage TF Discover
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+当你走近时，塞吉突然停下了手中的工作，甚至摘下了护目镜，死死地盯着你。
+<br><br>
+"等等..." <<he>>凑近嗅了嗅，又仔细观察了一下你的身体特征，"你的生理指标...非常迷人。我是说，非常独特。"
+<br><br>
+<<he>>意识到自己的失态，脸红了一下。"抱歉，我不是那个意思。我只是注意到你似乎正在经历某种...非典型的生物转化？"
+<br><br>
+你点了点头。塞吉的眼睛亮了起来。
+"如果你愿意的话，我希望能研究一下这个现象。当然，这可能需要你提供一些...样本。"
+<br><br>
+<<set $Pot.sageEventStage to 1>>
+<<npcincr Sage love 2>><<glove Sage>>
+<br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Sample
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"你愿意协助研究吗？太棒了！" 塞吉兴奋地拿出了采血针和试管。
+<br><br>
+过程很快，虽然有点刺痛。塞吉小心翼翼地收好样本。
+"给我几天时间，我想我能分析出其中的成分，甚至...找到控制它的方法。"
+<br><br>
+<<set $Pot.sageEventStage to 2>>
+<<set $Pot.sageResearchTimer to Time.days + 3>>
+<<npcincr Sage love 5>><<gglove Sage>>
+<<money 2000 "research_grant">>
+你获得了 £20.00 的研究补贴。
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Complete
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+你刚走进实验室，塞吉就冲了过来，手里拿着一瓶泛着荧光的液体。
+<br><br>
+"成功了！我发现了这些转化背后的化学机制！" <<he>>激动地说，"虽然我不能完全逆转它——..."
+<br><br>
+<<he>>的声音突然低了下去，眼神似乎穿透了你，凝视着虚空中的某个点。"那属于... <<printNobody>> 的范畴。"
+<br><br>
+一阵莫名的寒意瞬间爬上你的脊背。你感到周围的光线似乎暗淡了一瞬，空气中弥漫着一种说不清道不明的静电感。塞吉刚才提到了谁？或者说...是什么？那个名字在你耳边回响，却又像抓不住的烟雾一样消散，只留下一种令人不安的既视感。
+<br><br>
+"咳，无论如何，" 塞吉猛地眨了眨眼，仿佛从短暂的恍惚中惊醒，恢复了往常的热情，"既然我们已经触及了物质构成的边缘，我可以通过特定的化合物来<b>加速</b>或者<b>抑制</b>这个过程。"
+<br><br>
+<<he>>指了指实验台上的一排药剂。"以后如果你需要调整自己的状态，尽管来找我。"
+<br><br>
+<<set $Pot.sageEventStage to 3>>
+<<npcincr Sage love 5>><<gglove Sage>>
+<br>
+<<Llink "查看药剂服务" "Pot Sage TF Shop">><</Llink>>
+<br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Shop
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"你需要什么类型的药剂？" 塞吉问道。
+<br><br>
+
+<<set _dailyLimit to 2>>
+<<if $Pot.tfShopDay isnot Time.days>>
+	<<set $Pot.tfShopDay to Time.days>>
+	<<set $Pot.tfShopCount to 0>>
+<</if>>
+<span class="gold">今日剩余购买次数：<<print _dailyLimit - $Pot.tfShopCount>> / <<print _dailyLimit>></span>
+<br><br>
+
+<<if $Pot.tfShopCount gte _dailyLimit>>
+	<span class="black">塞吉今天似乎已经不打算再出售更多药剂了。</span>
+	<br>
+<<else>>
+	<div class="div-line"></div>
+	<span class="gold">抑制剂 (£50.00)</span> - <span class="blue">减少转化进度</span><br>
+	<<if $money gte 5000>>
+		<<Llink "购买狼化抑制剂" "Pot Sage TF Potion">><<set $potionType to "wolf">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买猫化抑制剂" "Pot Sage TF Potion">><<set $potionType to "cat">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买牛化抑制剂" "Pot Sage TF Potion">><<set $potionType to "cow">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买鸟化抑制剂" "Pot Sage TF Potion">><<set $potionType to "bird">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买狐化抑制剂" "Pot Sage TF Potion">><<set $potionType to "fox">><<set $potionMode to "inhibitor">><<money -5000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+	<<else>>
+		<span class="red">钱不够。</span>
+	<</if>>
+	<br>
+	<span class="gold">催化剂 (£100.00)</span> - <span class="purple">加速转化进度</span><br>
+	<<if $money gte 10000>>
+		<<Llink "购买狼化催化剂" "Pot Sage TF Potion">><<set $potionType to "wolf">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买猫化催化剂" "Pot Sage TF Potion">><<set $potionType to "cat">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买牛化催化剂" "Pot Sage TF Potion">><<set $potionType to "cow">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买鸟化催化剂" "Pot Sage TF Potion">><<set $potionType to "bird">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+		<<Llink "购买狐化催化剂" "Pot Sage TF Potion">><<set $potionType to "fox">><<set $potionMode to "catalyst">><<money -10000>><<set $Pot.tfShopCount += 1>><</Llink>>
+		<br>
+	<<else>>
+		<span class="red">钱不够。</span>
+	<</if>>
+	<br>
+<</if>>
+
+<div class="div-line"></div>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Sage TF Potion
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+你喝下了药剂。
+<br>
+
+<<if $potionMode is "inhibitor">>
+	<<if $potionType is "wolf">>
+		一股冰冷的寒意顺着喉咙滑下，像是冬夜里的冷风，带着淡淡的银针草苦味。你体内的躁动平息了下来。
+	<<elseif $potionType is "cat">>
+		味道有点像煮过头的薄荷茶，带着一丝让舌头麻木的清凉。那种想要抓挠东西的冲动减弱了。
+	<<elseif $potionType is "cow">>
+		口感像是一杯没加糖的浓缩草本汁，苦涩中带着泥土的气息。你感觉身体不再那么笨重和燥热。
+	<<elseif $potionType is "bird">>
+		像是吞下了一口沉重的铅水，压住了想要飞翔的轻盈感。嘴里残留着一种陈旧种子的味道。
+	<<elseif $potionType is "fox">>
+		极其苦涩，像是咬碎了一颗未成熟的橡子。那股时刻想要恶作剧的念头被强行压了下去。
+	<<else>>
+		味道有点像未成熟的柠檬混合了薄荷。
+	<</if>>
+	<br><br>
+    <<transform $potionType -10>>
+    <span class="blue">你感觉体内的那股野性稍微退去了一些。</span>
+<<else>>
+	<<if $potionType is "wolf">>
+		辛辣！液体滚烫地烧过食道，嘴里充满了铁锈和生肉的腥味。你忍不住想要对着月亮长嚎。
+	<<elseif $potionType is "cat">>
+		像是融化的温热奶油混合了浓烈的猫薄荷，香甜得让你头晕目眩。你的指尖发痒，瞳孔不自觉地收缩。
+	<<elseif $potionType is "cow">>
+		浓郁的甜味，混合着新鲜苜蓿和温热牛奶的香气。你感到一股暖流涌向胸口和腹部。
+	<<elseif $potionType is "bird">>
+		清脆的酸甜味，像是一把爆浆的野生浆果。你感到一阵轻盈的风似乎要将你托起。
+	<<elseif $potionType is "fox">>
+		甜腻中带着一丝烧焦木头的烟熏味，喝下去后让你感到一种诡异的兴奋和狡黠。
+	<<else>>
+		味道辛辣而刺激，像是一团火在胃里燃烧。
+	<</if>>
+	<br><br>
+    <<transform $potionType 10>>
+    <span class="purple">你感觉体内的野性在燃烧！</span>
+<</if>>
+
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>

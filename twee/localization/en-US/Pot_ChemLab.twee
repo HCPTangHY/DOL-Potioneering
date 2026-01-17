@@ -1,0 +1,61 @@
+:: Pot ChemLab|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+<<if $schoolstate is "afternoon" or $schoolstate is "lunch" or $schoolstate is "morning">>
+	<<= L("Pot.Welcome")>>
+	<br><br>
+	<<= L("Location.ChemLab.Desc")>>
+	<br><br>
+	
+	<<npc Sage>><<person1>>
+	
+	<<if $Pot.sageIntro is 0>>
+		<<set $Pot.sageIntro to 1>>
+		<<= L("Pot.Sage.Greet")>>
+		<br>
+		Sage looks up at you through the goggles. <<= L("Pot.Sage.Intro")>>
+		<br><br>
+		<<Llink "Talk to Sage" "Pot Sage Chat">><</Llink>>
+	<<else>>
+		<<= L("Pot.Sage.Greet")>>
+		<br><br>
+		
+		/* Transformation chain trigger logic */
+		<<potCheckTransform>>
+		<<if $Pot.sageEventStage is 0 and $NPCName[$NPCNameList.indexOf("Sage")].love gte 10 and _hasTF>>
+			<<Llink "Transformation research" "Pot Sage TF Discover">><</Llink>>
+			<br>
+		<<elseif $Pot.sageEventStage is 1 and $NPCName[$NPCNameList.indexOf("Sage")].love gte 20>>
+			<<Llink "Provide samples" "Pot Sage TF Sample">><</Llink>>
+			<br>
+		<<elseif $Pot.sageEventStage is 2 and $Pot.sageResearchTimer lte Time.days and $NPCName[$NPCNameList.indexOf("Sage")].love gte 30>>
+			<<Llink "Transformation research" "Pot Sage TF Complete">><</Llink>>
+			<br>
+		<<elseif $Pot.sageEventStage gte 3>>
+			<<Llink "Potion services" "Pot Sage TF Shop">><</Llink>>
+			<br>
+		<</if>>
+
+		<<Llink "Talk to Sage" "Pot Sage Chat">><</Llink>>
+	<</if>>
+	
+	<br><br>
+<<else>>
+	<<= L("Pot.Closed")>>
+	<br><br>
+<</if>>
+
+<<getouticon>><<Llink "Common.Leave" "Hallways">><<endevent>><</Llink>>
+
+:: Pot Sage Chat|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+<<set _event to setup.Pot.EventSystem.getEvent("PotSageTalk")>>
+<<if _event>>
+	<<goto _event>>
+<<else>>
+	Sage seems busy jotting down notes.
+	<br><br>
+	<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+<</if>>

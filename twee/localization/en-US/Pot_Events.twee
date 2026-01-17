@@ -1,0 +1,154 @@
+:: PotSageTalkChemistry|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"Did you know?" Sage lifts a beaker excitedly. "If you mix these solutions, the colours change in a wonderful way! Chemistry is basically magic, isn't it?"
+<br><br>
+You nod, and Sage looks delighted to have someone willing to listen to <<him>>.
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>>
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotSageTalkSchool|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+"Schoolwork can get pretty heavy sometimes," Sage sighs, "but the moment I come here and run a couple experiments, I feel a lot better."
+<br><br>
+<<he>> smiles at you. "What about you? Do you have any way to relax?"
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>>
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotSageTalkHobby|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+Sage is sketching something in a notebook. When you lean in, you see complex molecular diagrams.
+<br><br>
+"A new formula I'm working on," Sage explains. "I want to brew something that snaps you awake instantly. But it's still a bit unstable... last time I almost blew a test tube up."
+<br><br>
+<<he>> scratches the back of <<his>> head, embarrassed.
+<br><br>
+<<npcincr Sage love 2>><<gglove Sage>>
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotLabEventExplosion|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+Suddenly, a loud "BANG" comes from the other end of the lab! A cloud of black smoke rises.
+<br><br>
+"Cough, cough!" Sage stumbles out of the smoke, face smeared with soot. "...Looks like that ratio was wrong."
+<br><br>
+You can't help but laugh.
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: PotLabEventMess|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+You accidentally knock over a bottle filled with blue liquid. It spills across the floor.
+<br><br>
+"Don't move!" Sage rushes over and sprinkles some powder onto it. The liquid quickly gels up. "Careful—that was a strong acid... though it's diluted."
+<br><br>
+You look at <<him>> gratefully.
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>>
+<br><br>
+<<Llink "Common.Back" "Pot ChemLab">><<endevent>><</Llink>>
+
+:: Pot Hallway Discover Door|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+As you walk past a corner of the hallway, you notice an unusual mark on the wall.
+<br><br>
+Your knowledge of history tells you that this school building has undergone many renovations. Based on the texture of the wall and the surrounding traces, there seems to have been a door here once.
+<br><br>
+You look closely and realize that part of the wall is actually a cleverly disguised door. There is a rusty lock on it.
+<br><br>
+<<set $Pot.sageStage to 1>>
+<span class="green">You discovered a hidden door!</span>
+<br><br>
+<<Llink "Try to open the door" "Pot Hallway Locked Door">><</Llink>>
+<br><br>
+<<Llink "Leave for now" "Hallways">><<set $eventskip to 1>><</Llink>>
+
+:: Pot Hallway Locked Door|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+You try to push the hidden door open, but it won't budge. The lock, though rusty, holds firm.
+<br><br>
+It seems you'll need to find a key, or wait for someone who knows about this place to show up.
+<br><br>
+<<Llink "Leave" "Hallways">><<set $eventskip to 1>><</Llink>>
+
+:: Pot Hallway Meet Sage|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+As you pass the hidden door again, you notice a student wearing goggles standing in front of it, holding a set of keys.
+<br><br>
+<<he>> notices you and looks surprised. "You... you can see this door?"
+<br><br>
+You nod.
+<br><br>
+"Interesting," <<he>> adjusts <<his>> goggles. "Most people wouldn't notice it. I'm Sage, and this is my... private lab."
+<br><br>
+<<he>> unlocks the door with a key, revealing a small room filled with various chemical apparatus.
+<br><br>
+"Since you found this place," <<he>> says, "you're welcome to visit anytime. I can teach you some interesting things."
+<br><br>
+<<set $Pot.sageStage to 2>>
+<<set $Pot.sageIntro to 1>>
+<<npcincr Sage love 3>><<gglove Sage>>
+<span class="green">You met Sage, and can now enter the Chemistry Lab!</span>
+<br><br>
+<<Llink "Enter Lab" "Pot ChemLab">><<endevent>><</Llink>>
+<br><br>
+<<Llink "Leave for now" "Hallways">><<endevent>><<set $eventskip to 1>><</Llink>>
+
+:: Pot Canteen Meet Sage|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+You see Sage sitting alone in a corner of the canteen, a thick chemistry book and a barely touched lunch in front of <<him>>.
+<br><br>
+<<he>> seems completely immersed in the book, occasionally poking at the food with a fork, but never looking away from the pages.
+<br><br>
+<<Llink "Eat with Sage" "Pot Canteen Sage Lunch">><<pass 15>><<stress -6>><<npcincr Sage love 1>><</Llink>><<glove Sage>><<lstress>>
+<br><br>
+<<Llink "Don't disturb <<him>>" "Canteen">><<endevent>><</Llink>>
+
+:: Pot Canteen Sage Lunch|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+You take your tray and sit opposite Sage. <<he>> looks up, and upon seeing it's you, smiles.
+<br><br>
+"Oh, it's you." <<he>> closes the book. "It's rare for anyone to want to eat with me."
+<br><br>
+You chat as you eat, and Sage enthusiastically explains what <<he>> was reading—a synthesis method for a new type of catalyst. Although you don't understand much, <<his>> passion is infectious.
+<br><br>
+"Thanks for the company," <<he>> says as lunch ends. "Come find me in the lab next time."
+<br><br>
+<<Llink "Back" "Canteen">><<endevent>><</Llink>>
+
+:: Pot Hallway Sage Random|en-US [twee]
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Sage>><<person1>>
+
+You run into Sage in the hallway. <<he>> is carrying a pile of test tubes and flasks, walking a bit unsteadily.
+<br><br>
+"Careful!" you warn.
+<br><br>
+"I'm fine, I'm fine," <<he>> laughs. "I'm used to it. These are new equipment from the storage room, taking them back to the lab."
+<br><br>
+<<he>> stops and looks at you. "Come sit in the lab if you have time? I've made some new discoveries recently I want to share with you."
+<br><br>
+<<npcincr Sage love 1>><<glove Sage>><br>
+<<Llink "Continue" "Hallways">><<endevent>><<set $eventskip to 1>><</Llink>>

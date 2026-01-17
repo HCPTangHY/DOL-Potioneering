@@ -1,0 +1,69 @@
+:: Pot NPC Widgets [widget]
+<<widget "init_Pot_NPCs">>
+	<<if !setup.NPCNameList.includes("Sage")>>
+		<<run setup.NPCNameList.push("Sage");>>
+	<</if>>
+	
+	<<if typeof initCNPC === "function">>
+		<<run initCNPC();>>
+	<</if>>
+
+	<<run setup.loveAlias["Sage"] = () => L('NPC.Alias.Sage')>>
+
+	<<if !$NPCNameList.includes("Sage")>>
+		<<newNamedNpc {
+			nam: "Sage",
+			title: L('NPC.Title.Sage'),
+			insecurity: "weak",
+			adult: 0,
+			teen: 1,
+			type: "human",
+			state: "active",
+			name_known: 1,
+			pregnancyAvoidance: 100
+		}>>
+		
+		<<if setup.NPCNameList_cn_name>><<run setup.NPCNameList_cn_name += "|Sage,塞吉">><</if>>
+		<<if setup.NPCTitleList_cn_name>><<run setup.NPCTitleList_cn_name += "|chemistry student,化学爱好者">><</if>> 
+		
+		<<set _idx to $NPCNameList.indexOf("Sage")>>
+		<<if _idx !== -1>>
+			<<set $NPCName[_idx].pregnancy to {}>>
+			<<set $NPCName[_idx].eyeColour to "green">>
+			<<set $NPCName[_idx].hairColour to "black">>
+			<<set $NPCName[_idx].purity to 50>>
+			<<set $NPCName[_idx].corruption to 0>>
+			<<set $NPCName[_idx].trauma to 0>>
+			<<set $NPCName[_idx].lust to 0>>
+			<<set $NPCName[_idx].love to 0>>
+			<<set $NPCName[_idx].trust to 0>>
+			<<set $NPCName[_idx].dom to 0>>
+			<<set $NPCName[_idx].rage to 0>>
+			<<initNNPCClothes "Sage">>
+		<</if>>
+	<</if>>
+	
+	<<if $Pot is undefined>>
+		<<set $Pot to {
+			sageIntro: 0,
+			sageRelationship: 0,
+			labVisitCount: 0,
+			sageStage: 0, /* 0:未发现, 1:发现门, 2:已认识塞吉(实验室可进) */
+			sageEventStage: 0, /* 0:未开始, 1:发现, 2:研究中, 3:完成(解锁商店) */
+			sageResearchTimer: 0,
+			tfShopDay: -1,
+			tfShopCount: 0
+		}>>
+	<</if>>
+<</widget>>
+
+<<widget "potCheckTransform">>
+    /* 检查玩家是否有任何转化进度或特征 */
+    <<set _hasTF to false>>
+    <<if $wolfbuild gte 20 or $catbuild gte 20 or $cowbuild gte 20 or $birdbuild gte 20 or $foxbuild gte 20 or $angelbuild gte 20 or $demonbuild gte 20 or $fallenbuild gte 20>>
+        <<set _hasTF to true>>
+    <</if>>
+    <<if $wolfgirl gte 1 or $cat gte 1 or $cow gte 1 or $harpy gte 1 or $fox gte 1 or $angel gte 1 or $demon gte 1 or $fallenangel gte 1>>
+        <<set _hasTF to true>>
+    <</if>>
+<</widget>>
